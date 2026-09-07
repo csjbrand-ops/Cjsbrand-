@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSJ — Chotty Shah Jee | Premium Unstitched Suiting</title>
+<meta name="description" content="Chotty Shah Jee — premium unstitched suiting, boxed colour sets, delivered across Pakistan. Order directly on WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="announcementBar" class="announcement-bar">
+  <span id="announcementText">Cash on delivery all over Pakistan.</span>
+</div>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a href="#top" class="brand" data-store-name>CSJ</a>
+    <nav class="main-nav" aria-label="Primary">
+      <a href="#collection">Collection</a>
+      <a href="#tiers">Quality tiers</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button type="button" id="cartToggle" class="cart-toggle" aria-label="Open cart">
+      Bag <span id="cartCount" class="cart-count">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div id="heroSlides" class="hero-slides" aria-hidden="true"></div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="hero-kicker">Chotty Shah Jee</p>
+        <h1 id="heroTitle">Unstitched suiting, cut for the tailor you already trust</h1>
+        <p id="heroSubtitle" class="hero-sub">Nine boxed colour sets, full 4 metres in every pack, ready to send straight to your darzi.</p>
+        <a href="#collection" class="btn btn-primary btn-lg">Shop the collection →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust-strip">
+    <div class="container trust-grid">
+      <div class="trust-item">
+        <span class="trust-icon">✂</span>
+        <p id="badgeFabricLength">Full 4 metres in every pack</p>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">↺</span>
+        <p id="badgeReturn">7-day return — unopened pack only</p>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">₨</span>
+        <p id="badgeAdvance">Rs 100 advance to book your order</p>
+      </div>
+      <div class="trust-item">
+        <span class="trust-icon">⚠</span>
+        <p id="badgeWarranty">No warranty on any order</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="collection" class="collection">
+    <div class="container">
+      <div class="section-head">
+        <h2>The collection</h2>
+        <p>Every set arrives boxed, with a fixed unstitched length across the pieces shown.</p>
+      </div>
+      <div id="filterBar" class="filter-bar" role="group" aria-label="Filter by category"></div>
+      <p id="gridStatus" class="grid-status"></p>
+      <div id="productGrid" class="product-grid"></div>
+    </div>
+  </section>
+
+  <section id="tiers" class="tiers">
+    <div class="container">
+      <div class="section-head">
+        <h2>Quality tiers</h2>
+        <p>Every set we stock is graded, so you know exactly what you're getting before it reaches your tailor.</p>
+      </div>
+      <div class="tiers-grid">
+        <div class="tier-card">
+          <h3>Signature</h3>
+          <p>Our finest boxed sets — richest colour depth and the best hand-feel we stock.</p>
+          <button type="button" class="btn btn-ghost" data-tier-filter="Signature">Shop Signature</button>
+        </div>
+        <div class="tier-card">
+          <h3>Premium</h3>
+          <p>Strong, comfortable cloth with a proper finish — everyday premium at a fair price.</p>
+          <button type="button" class="btn btn-ghost" data-tier-filter="Premium">Shop Premium</button>
+        </div>
+        <div class="tier-card">
+          <h3>Value</h3>
+          <p>Honest, durable cloth that's easy on the pocket without cutting corners on finish.</p>
+          <button type="button" class="btn btn-ghost" data-tier-filter="Value">Shop Value</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container about-grid">
+      <div>
+        <h2>Cloth first, everything else second</h2>
+        <p>CSJ boxes are put together around one idea: the fabric should carry the suit, not the label. Each set is finished, folded and ready to move to your tailor the same day it arrives.</p>
+      </div>
+      <div id="contact" class="about-contact">
+        <h3>Order &amp; delivery</h3>
+        <p id="contactInfo">WhatsApp orders: 0322-7707172</p>
+        <p id="shippingInfo">Dispatched within 2–3 working days, nationwide.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-row">
+    <p data-store-name>CSJ — Chotty Shah Jee</p>
+    <p>&copy; <span id="year"></span> Chotty Shah Jee. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Cart drawer -->
+<div id="cartOverlay" class="drawer-overlay"></div>
+<aside id="cartDrawer" class="cart-drawer" aria-label="Shopping bag">
+  <div class="drawer-head">
+    <h2>Your bag</h2>
+    <button type="button" id="cartClose" class="icon-btn" aria-label="Close bag">&times;</button>
+  </div>
+  <div id="cartItems" class="cart-items"></div>
+  <p id="cartEmpty" class="cart-empty">Your bag is empty.</p>
+  <div class="drawer-foot">
+    <div class="summary-row summary-row-total">
+      <span>Subtotal</span>
+      <span id="cartSubtotal">Rs 0</span>
+    </div>
+    <button type="button" id="checkoutBtn" class="btn btn-primary btn-block" disabled>Checkout</button>
+  </div>
+</aside>
+
+<!-- Product detail modal -->
+<div id="productModal" class="modal">
+  <div class="modal-panel modal-panel-lg">
+    <button type="button" id="productModalClose" class="icon-btn modal-close" aria-label="Close">&times;</button>
+    <div id="productModalBody" class="modal-body-grid"></div>
+  </div>
+</div>
+
+<!-- Checkout modal -->
+<div id="checkoutModal" class="modal">
+  <div class="modal-panel">
+    <button type="button" id="checkoutModalClose" class="icon-btn modal-close" aria-label="Close">&times;</button>
+    <h2>Checkout</h2>
+    <div id="checkoutSummary" class="checkout-summary"></div>
+    <div class="summary-row">
+      <span>Advance payment (due now)</span>
+      <span id="checkoutAdvance">Rs 100</span>
+    </div>
+    <div class="summary-row">
+      <span>Balance (cash on delivery)</span>
+      <span id="checkoutBalance">Rs 0</span>
+    </div>
+    <div class="summary-row summary-row-total">
+      <span>Total</span>
+      <span id="checkoutTotal">Rs 0</span>
+    </div>
+    <p id="advanceInstructions" class="advance-instructions"></p>
+    <form id="checkoutForm" class="checkout-form">
+      <label>Full name<input type="text" name="name" required></label>
+      <label>Phone number<input type="tel" name="phone" required></label>
+      <label>City<input type="text" name="city" required></label>
+      <label>Delivery address<textarea name="address" rows="2" required></textarea></label>
+      <label>Advance payment transaction ID / reference<input type="text" name="advanceRef" required placeholder="e.g. JazzCash TID or last 4 digits"></label>
+      <label class="checkbox-label"><input type="checkbox" name="advanceConfirm" required> I have sent the advance payment shown above</label>
+      <label>Order notes (optional)<textarea name="notes" rows="2"></textarea></label>
+      <p id="checkoutWarning" class="form-warning" style="display:none;"></p>
+      <button type="submit" id="placeOrderBtn" class="btn btn-primary btn-block">Place order</button>
+      <p class="checkout-note">After placing your order we'll open WhatsApp so you can confirm it with us directly.</p>
+    </form>
+  </div>
+</div>
+
+<!-- Order confirmation modal -->
+<div id="confirmModal" class="modal">
+  <div class="modal-panel modal-panel-sm">
+    <button type="button" id="confirmModalClose" class="icon-btn modal-close" aria-label="Close">&times;</button>
+    <h2>Order received</h2>
+    <p>Your order <strong id="confirmOrderId"></strong> has been saved. We've opened WhatsApp so you can send it to us — please confirm there to finish the process.</p>
+    <a id="confirmWhatsappLink" href="#" target="_blank" class="btn btn-primary btn-block">Open WhatsApp again</a>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

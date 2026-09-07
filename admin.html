@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSJ Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- Login screen -->
+<section id="loginScreen" class="login-screen">
+  <form id="loginForm" class="login-card">
+    <h1>CSJ Admin</h1>
+    <p class="login-sub">Sign in with your admin account.</p>
+    <label>Email<input type="email" name="email" id="loginEmail" required autocomplete="username"></label>
+    <label>Password<input type="password" name="password" id="loginPassword" required autocomplete="current-password"></label>
+    <p id="loginError" class="form-warning" style="display:none;"></p>
+    <button type="submit" id="loginBtn" class="btn btn-primary btn-block">Sign in</button>
+  </form>
+</section>
+
+<!-- Access denied screen -->
+<section id="deniedScreen" class="login-screen" style="display:none;">
+  <div class="login-card">
+    <h1>Access denied</h1>
+    <p>This account is not authorised to view the CSJ admin panel.</p>
+    <button type="button" id="deniedLogoutBtn" class="btn btn-primary btn-block">Sign out</button>
+  </div>
+</section>
+
+<!-- Admin app -->
+<div id="adminApp" class="admin-app" style="display:none;">
+  <header class="admin-header">
+    <div class="admin-header-row">
+      <span class="admin-brand">CSJ Admin</span>
+      <nav class="admin-tabs" id="adminTabs">
+        <button type="button" class="admin-tab is-active" data-tab="products">Products</button>
+        <button type="button" class="admin-tab" data-tab="orders">Orders</button>
+        <button type="button" class="admin-tab" data-tab="settings">Website settings</button>
+      </nav>
+      <button type="button" id="logoutBtn" class="btn btn-ghost">Log out</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+
+    <!-- Products panel -->
+    <section id="panel-products" class="admin-panel is-active">
+      <div class="panel-head">
+        <h2>Products</h2>
+        <button type="button" id="addProductBtn" class="btn btn-primary">Add product</button>
+      </div>
+      <p id="productsStatus" class="panel-status"></p>
+      <div class="table-wrap">
+        <table class="admin-table" id="productsTable">
+          <thead>
+            <tr>
+              <th>Image</th><th>Name</th><th>Category</th><th>Tag</th>
+              <th>Price</th><th>Order</th><th>Status</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="productsTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Orders panel -->
+    <section id="panel-orders" class="admin-panel">
+      <div class="panel-head">
+        <h2>Orders</h2>
+      </div>
+      <div class="order-tabs" id="orderTabs">
+        <button type="button" class="admin-tab is-active" data-order-tab="pending">Pending</button>
+        <button type="button" class="admin-tab" data-order-tab="completed">Completed</button>
+        <button type="button" class="admin-tab" data-order-tab="rejected">Rejected</button>
+      </div>
+      <p id="ordersStatus" class="panel-status"></p>
+      <div id="ordersList" class="orders-list"></div>
+    </section>
+
+    <!-- Settings panel -->
+    <section id="panel-settings" class="admin-panel">
+      <div class="panel-head"><h2>Website settings</h2></div>
+      <form id="settingsForm" class="settings-form">
+        <label>Store name<input type="text" name="storeName"></label>
+        <label>WhatsApp number (international, no +)<input type="text" name="whatsappNumber"></label>
+        <label>Hero title<input type="text" name="heroTitle"></label>
+        <label>Hero subtitle<textarea name="heroSubtitle" rows="2"></textarea></label>
+        <label>Announcement text<input type="text" name="announcementText"></label>
+        <label>Contact information<input type="text" name="contactInfo"></label>
+        <label>Shipping information<input type="text" name="shippingInfo"></label>
+        <h3>Business rules</h3>
+        <label>Advance payment (Rs)<input type="number" name="advancePayment" min="0"></label>
+        <label>Advance payment number (JazzCash/Easypaisa)<input type="text" name="advancePaymentNumber"></label>
+        <label>Fabric length badge text<input type="text" name="fabricLengthText"></label>
+        <label>Return policy badge text<input type="text" name="returnPolicyText"></label>
+        <label>Warranty badge text<input type="text" name="warrantyText"></label>
+        <label>Cash-on-delivery badge text<input type="text" name="codText"></label>
+        <p id="settingsStatus" class="panel-status"></p>
+        <button type="submit" class="btn btn-primary">Save settings</button>
+      </form>
+    </section>
+
+  </main>
+</div>
+
+<!-- Product edit/add modal -->
+<div id="productModal" class="modal">
+  <div class="modal-panel">
+    <button type="button" id="productModalClose" class="icon-btn modal-close" aria-label="Close">&times;</button>
+    <h2 id="productModalTitle">Edit product</h2>
+    <form id="productForm" class="product-form">
+      <input type="hidden" name="id">
+      <label>Name<input type="text" name="name" required></label>
+      <div class="form-row">
+        <label>Price<input type="number" name="price" min="0" required></label>
+        <label>Old price (optional)<input type="number" name="oldPrice" min="0"></label>
+      </div>
+      <div class="form-row">
+        <label>Category<input type="text" name="category" required></label>
+        <label>Tag (optional)<input type="text" name="tag"></label>
+      </div>
+      <label>Image path<input type="text" name="image" placeholder="images/csj-1.jpg" required></label>
+      <label>Description<textarea name="description" rows="3" required></textarea></label>
+      <label>Colours (one per line, "Name, #hex")<textarea name="colorsText" rows="3" placeholder="Wine Maroon, #5c2027"></textarea></label>
+      <div class="form-row">
+        <label>Display order<input type="number" name="displayOrder" min="1" required></label>
+        <label class="checkbox-label"><input type="checkbox" name="active"> Active (visible on site)</label>
+      </div>
+      <p id="productFormWarning" class="form-warning" style="display:none;"></p>
+      <button type="submit" class="btn btn-primary btn-block">Save product</button>
+    </form>
+  </div>
+</div>
+
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>
